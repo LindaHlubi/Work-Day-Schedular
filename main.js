@@ -1,4 +1,4 @@
-$(document).ready(function(e) {
+$(document).ready(function() {
 // current date
  var today = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
  document.getElementById("currentDay").innerHTML = today;
@@ -47,11 +47,10 @@ function storeContent() {
     storecontent();
 }
 
-var button = $(".button");
-
-button.on("click", function () {
-    var presentHour = $(this).parent().attr("value");
+$(".btn").click(function (){
+    event.preventDefault();
+    var presentHour = $(this).parent().data("value");
     var note = $(this).siblings(".note").val();
-
+    console.log("Does it work");
     localStorage.setItem(presentHour, note);
 });
