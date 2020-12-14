@@ -15,21 +15,32 @@ $(document).ready(function() {
  
  var presentHour = moment().format('H');
  console.log(presentHour)
+function colorCode() {
 
-
- $(".textarea").each(function() {
-     var value = parseInt($(this).attr("value"));
-     if (presentHour === value) {
-         $(this).addClass("bg-danger")
+ $(".time-block").each(function() {
+     var hourBlock = parseInt($(this).attr("value"));
+     
+     if (presentHour === hourBlock) {
+        $(this).addClass("present");
+    }
+     else if (presentHour < hourBlock) {
+         $(this).addClass("future");
      }
-     if (presentHour < value) {
-         $(this).addClass("bg-success")
-     }
-     if (presentHour > value) {
-         $(this).addClass("bg-mute")
+     
+     else {
+         (presentHour > hourBlock) 
+         $(this).addClass("past");
         
-     }
- })
+     
+    }
+   
+})
+
+ }
+ 
+colorCode();
+
+})
 // Local storage
 
 
