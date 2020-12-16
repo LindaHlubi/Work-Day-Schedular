@@ -30,15 +30,19 @@ colorCode();
 })
 
  
-
-
-
+$(".btn").click(function (){
+    event.preventDefault();
+    var hourBlock = $(this).parent().data("value");
+    var note = $(this).siblings(".note").val();
+    console.log("Does it work");
+    localStorage.setItem(hourBlock, note);
+});
 
 function storeContent() {
 
     $(".time-block").each(function () {
-        var value = $(this).attr("value");
-        var note = localStorage.getItem(value);
+        var hourBlock = $(this).attr("value");
+        var note = localStorage.getItem(hourBlock);
 
         if (note !== null) {
             $(this).children(".note").val(note);
@@ -46,16 +50,3 @@ function storeContent() {
     });
     storecontent();
 }
-
-$(".btn").click(function (){
-    event.preventDefault();
-    var presentHour = $(this).parent().data("value");
-    var note = $(this).siblings(".note").val();
-    console.log("Does it work");
-    localStorage.setItem(presentHour, note);
-});
-
- if (localStorage.getItem("btn") !=null) {
-     $(this).data(localStorage.getItem("btn"));
- }
- 
