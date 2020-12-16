@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function(e) {
 // current date
  var today = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
  document.getElementById("currentDay").innerHTML = today;
@@ -13,26 +13,26 @@ $(document).ready(function() {
      var hourBlock = parseInt($(this).attr("value"));
      
      if (presentHour === hourBlock) {
-        $(this).addClass("present");
+        $(this).addClass("present bg-danger");
     }
-     else if (presentHour < hourBlock) {
+     if (presentHour < hourBlock) {
          $(this).addClass("future");
      }
      
-     else {
-         (presentHour > hourBlock) 
+     if(presentHour > hourBlock) 
          $(this).addClass("past");
         
      
-    }
+    })
+}
+colorCode();
    
 })
 
- }
  
-colorCode();
 
-})
+
+
 
 function storeContent() {
 
@@ -54,3 +54,8 @@ $(".btn").click(function (){
     console.log("Does it work");
     localStorage.setItem(presentHour, note);
 });
+
+ if (localStorage.getItem("btn") !=null) {
+     $(this).data(localStorage.getItem("btn"));
+ }
+ 
